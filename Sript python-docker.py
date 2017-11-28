@@ -16,7 +16,7 @@ while loop != 0:
 
 #adcionar o tempo
     elif 'start' in comando:
-        p = call('docker start {}'.format(comando[1]))
+        call('docker start {}'.format(comando[1]))
         print('Container {} iniciado'.format(comando[1]))
 
 #Comando que para a execução do container
@@ -26,7 +26,7 @@ while loop != 0:
 
 #comando que abre o cmd dentro de um container para execução de comandos
     elif 'exec' in comando:
-        p = call('docker exec -it {} cmd'.format(comando[1]), shell=True)
+        call('docker exec -it {} cmd'.format(comando[1]), shell=True)
 
 #Sair do Script
     elif comando == ['exit']:
