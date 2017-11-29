@@ -7,18 +7,19 @@ print('-=-' * 30)
 print('Python Script to Management Docker')
 print('-=-' * 30, '\n')
 
-
+#iniciando estrutura de repetição
 while loop != 0:
     comando = input('>>> ').lower().strip().split()
     FNULL = open(devnull, 'w')
 
 
-#checar como exibir apenas o nome, imagem e status (execução)
+#checar stats de container (execução)
     if 'status' in comando:
         call('docker ps -a --filter id={}'.format(comando[1]), shell=True)
 
 #Iniciar a execução de um container
     elif 'start' in comando:
+        #com o parâmetro para seu stop automático
         if '-t' in comando:
             call('docker start {}'.format(comando[3]))
             Popen('ping 127.0.0.1 -n {} > nul && docker stop {}'.format(int(comando[2]) + 1, comando[3]), shell=True, stdout=FNULL, stderr=STDOUT)
