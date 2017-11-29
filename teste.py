@@ -1,41 +1,33 @@
-import docker
-client = docker.from_env()
-containers1 = str(client.containers.list(all)).split()
-
-
-print(containers1)
-comando = input(':').strip().lower().split()
-print(comando)
-
-if 'status' in comando[0]:
-    if comando[1] + '>,' in containers1 or comando[1] + '>]' in containers1:
-        print(client.containers.get(comando[1]))
-    else:
-        print('container ID not found\n')
-        
-        
-# usando o cmd para realizar as requisições
 import subprocess
 loop = 1
-proc = subprocess.Popen(['hostname'], stdout=subprocess.PIPE, shell=True)
-(out, err) = proc.communicate()
-containers = str(out)
-print(containers)
+
 
 while loop != 0:
     comando = input('>>> ').lower().strip().split()
 
 #checar como conseguir todo o container id
-    if 'status' in comando:
-        subprocess.call(comando[1])
-        print('\n')
+    def start():
+        if 'start' in comando[0]:
+            if '-t' in comando[1]:
+                print('tempo')
+            else:
+                subprocess.call('hostname')
 
-    elif comando == ['amoeba']:
-        print('Olha no que deu\n')
+    def stop():
+        if 'stop' in comando:
+            print('Olha no que deu')
 
-    elif comando == ['exit']:
-        exit()
+    def status():
+        if 'status' in comando:
+            print('status')
 
-    else:
-        print('por favor digite um comando válido\n')
+    def executar():
+        if 'exec' in comando:
+            print('Digite seu comandinho')
+     
+    def fechar():
+        if comando == 'exit':
+            exit()
 
+    if comando is not None:
+        start(), status(), stop(), fechar(), executar()
