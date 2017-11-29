@@ -1,39 +1,33 @@
-#import docker
-from subprocess import call, Popen, PIPE
+from os import devnull
+from subprocess import call, Popen, PIPE, STDOUT
+
 loop = 1
 
-proc = Popen('docker ps -a', stdout=PIPE, shell=True)
-(out, err) = proc.communicate()
-containers = str(out)
-#print(containers)
-
-print('-=-' * 20)
-print('Bem Vindo ao script python do Juan')
-print('-=-' * 20, '\n')
-
+print('-=-' * 30)
+print('Python Script to Management Docker')
+print('-=-' * 30, '\n')
 
 
 while loop != 0:
     comando = input('>>> ').lower().strip().split()
+    FNULL = open(devnull, 'w')
+
 
 #checar como exibir apenas o nome, imagem e status (execução)
     if 'status' in comando:
-        if comando[1] in containers:
-            call('docker ps -a --filter id={}'.format(comando[1]), shell=False,)
-        else:
-            print('O container {} não existe'.format(comando[1]))
+        call('docker ps -a --filter id={}'.format(comando[1]), shell=True)
 
-#adcionar o tempo
+#Iniciar a execução de um container
     elif 'start' in comando:
-        call('docker start {}'.format(comando[1]))
-        if comando[1] in containers:
-            print('Container {} iniciado'.format(comando[1]))
+        if '-t' in comando:
+            call('docker start {}'.format(comando[3]))
+            Popen('ping 127.0.0.1 -n {} > nul && docker stop {}'.format(int(comando[2]) + 1, comando[3]), shell=True, stdout=FNULL, stderr=STDOUT)
+        else:
+            call('docker start {}'.format(comando[1]))
 
 #Comando que para a execução do container
     elif 'stop' in comando:
-        Popen('docker stop {}'.format(comando[1]), shell=False)
-        if comando[1] in containers:
-            print('Container {} parado'.format(comando[1]))
+        call('docker stop {}'.format(comando[1]))
 
 #comando que abre o cmd dentro de um container para execução de comandos
     elif 'exec' in comando:
