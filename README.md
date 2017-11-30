@@ -149,9 +149,20 @@ def fechar():
 
 O script foi escrito com uma quantidade limitada de comandos, porém novos comandos podem ser adicionados. Para que novos comandos possam ser inseridos no script é necessário verificar os comandos CLI do docker e usar os métdos presentes no módulo SUBPROCCES para que o python execute comandos no CMD.
 
+### Criando função
+
 É necessário que se crie uma função para este comando, e nos parâmetros desta função será definida a sua instrução.
 ```
-def fechar():
+def novo():
         if 'novo' in comando:
             call('<docker_CLI_comando>', shell=True)
+```
+### Declarando a Função
+
+Após a criação da função novo() é necessário que a mesma seja chamada posteriormente. Para isso vamos acrescentá-la no 'if' que checa o input de comando:
+
+```
+#input de comando
+    if comando is not None:
+        start(), stop(), status(), executar(), fechar(), novo()
 ```
