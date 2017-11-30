@@ -1,10 +1,10 @@
 # Script-Python-Docker
 
-Trata-se de um script escrito em python 3 com fuções préviamente definidas para executar comandos, com o objetivo de gerenciamento de containers no Docker.
+Trata-se de um script escrito em python 3 com funções previamente definidas para executar comandos, com o objetivo de gerenciamento de containers no Docker.
 
 ## Introdução
 
-O código foi desenvolvido e testado em um abiente local utilizando o Windows 10. Portanto estas instruções tornarão possível a utilização deste script em sua máquina local.
+O código foi desenvolvido e testado em um ambiente local utilizando o Windows 10. Portanto, estas instruções tornarão possível a utilização deste script em sua máquina local.
 
 ### Pré-requisitos
 
@@ -22,7 +22,7 @@ Hyper-v
 
 ### Instalação
 
-Passos para a instalação dos pré requisitos:
+Passos para a instalação dos pré-requisitos:
 
 Python 3:
 
@@ -60,7 +60,7 @@ Atualmente o script conta com os seguintes comandos:
 * exec
 * exit
 
-Furamente novos comandos podem ser adicionados.
+Futuramente novos comandos podem ser adicionados.
 
 ### Comando Start
 
@@ -69,7 +69,7 @@ O comando start inicia a execução de um container.
 ```
 start <container_ID>
 ```
-A adição do parâmetro -t no comando indica que o container sera iniciado e depois será automáticamente parado após os segundos informados pelo usuário no comando:
+A adição do parâmetro -t no comando indica que o container sera iniciado e depois será automaticamente parado após os segundos informados pelo usuário no comando:
 
 ```
 start -t <tempo_segundos> <container_ID>
@@ -104,7 +104,7 @@ def stop():
 ```
 ### Comando status
 
-O comando status mostra os detalhes de um container como nome da imagem, se está em execução e seu nome.
+O comando status mostra os detalhes de um container, como nome da imagem, se está em execução e seu nome.
 
 ```
 status <container_ID>
@@ -148,7 +148,7 @@ def fechar():
 
 ## Adicionar novos comandos no script
 
-O script foi escrito com uma quantidade limitada de comandos, porém novos comandos podem ser posteriormen adicionados. Para que novos comandos possam ser inseridos no script é necessário verificar a documentação CLI do docker e usar os métodos presentes no módulo SUBPROCCES para que o python execute comandos do CMD.
+O script foi escrito com uma quantidade limitada de comandos, porém novos comandos podem ser posteriormente adicionados. Para que novos comandos possam ser inseridos no script é necessário verificar a documentação CLI do docker e usar os métodos presentes no módulo SUBPROCESS para que o python execute comandos do CMD.
 
 ### Criando função
 
