@@ -4,7 +4,7 @@ from subprocess import call, Popen, STDOUT
 loop = 1
 
 print('-=-' * 30)
-print('Scrip Python para gerenciamento do Docker')
+print('Script Python para gerenciamento do Docker')
 print('-=-' * 30, '\n')
 
 #iniciando estrutura de repetição
