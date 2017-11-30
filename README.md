@@ -4,7 +4,7 @@ Trata-se de um script escrito em python 3 com fuções préviamente definidas pa
 
 ## Introdução
 
-O código foi desenvolvido e testado em um abiente local utilizando o Wondows desktop. Portanto estas instruções tornarão possível a utilização deste script em sua máquina local.
+O código foi desenvolvido e testado em um abiente local utilizando o Windows 10. Portanto estas instruções tornarão possível a utilização deste script em sua máquina local.
 
 ### Pré-requisitos
 
@@ -27,13 +27,15 @@ Passos para a instalação dos pré requisitos:
 Python 3:
 
 ```
-Baixar a última versão
+Baixar o último release:
+
 https://www.python.org/downloads/
 ```
 
 Hyper-V
 ```
-Manual para habilitar a função de virtualização no windows 10 (port)
+Manual para habilitar a função de virtualização no windows 10 (port):
+
 https://docs.microsoft.com/pt-br/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
 ```
 
@@ -41,15 +43,14 @@ Docker
 
 ```
 Download (eng):
+
 https://store.docker.com/editions/community/docker-ce-desktop-windows
 ```
 ```
 Criação de imagem e container (eng):
+
 https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Executando os comandos
 
 Atualmente o script conta com os seguintes comandos: 
@@ -147,7 +148,7 @@ def fechar():
 
 ## Adicionar novos comandos no script
 
-O script foi escrito com uma quantidade limitada de comandos, porém novos comandos podem ser adicionados. Para que novos comandos possam ser inseridos no script é necessário verificar os comandos CLI do docker e usar os métdos presentes no módulo SUBPROCCES para que o python execute comandos no CMD.
+O script foi escrito com uma quantidade limitada de comandos, porém novos comandos podem ser posteriormen adicionados. Para que novos comandos possam ser inseridos no script é necessário verificar a documentação CLI do docker e usar os métodos presentes no módulo SUBPROCCES para que o python execute comandos do CMD.
 
 ### Criando função
 
@@ -157,7 +158,7 @@ def novo():
         if 'novo' in comando:
             call('<docker_CLI_comando>', shell=True)
 ```
-### Declarando a Função
+### Declarando a função
 
 Após a criação da função novo() é necessário que a mesma seja chamada posteriormente. Para isso vamos acrescentá-la no 'if' que checa o input de comando:
 
