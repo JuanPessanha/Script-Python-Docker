@@ -78,8 +78,8 @@ start -t <tempo_segundos> <container_ID>
 Os comandos acima são declarados na função start()
 ```
 def start():
-        if 'start' in comando:
-            if '-t' in comando and len(comando) > 1:
+        if 'start' in comando and len(comando) > 1:
+            if '-t' in comando:
                 call('docker start {}'.format(comando[3]))
                 Popen('ping 127.0.0.1 -n {} > nul && docker stop {}'.format(int(comando[2]) + 1, comando[3]),
                       shell=True, stdout=FNULL, stderr=STDOUT)
