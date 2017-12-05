@@ -14,7 +14,7 @@ while loop != 0:
 
 #funções de comando
     def start():
-        if 'start' in comando:
+        if 'start' in comando and len(comando) > 1:
             if '-t' in comando:
                 call('docker start {}'.format(comando[3]))
                 Popen('ping 127.0.0.1 -n {} > nul && docker stop {}'.format(int(comando[2]) + 1, comando[3]),
@@ -23,22 +23,26 @@ while loop != 0:
                 call('docker start {}'.format(comando[1]))
 
     def stop():
-        if 'stop' in comando:
+        if 'stop' in comando and len(comando) > 1:
             call('docker stop {}'.format(comando[1]))
 
     def status():
-        if 'status' in comando:
+        if 'status' in comando and len(comando) > 1:
             call('docker ps -a --filter id={}'.format(comando[1]), shell=True)
 
     def executar():
-        if 'exec' in comando:
+        if 'exec' in comando and len(comando) > 1:
             call('docker exec -it {} cmd'.format(comando[1]), shell=True)
 
     def fechar():
         if comando == ['exit']:
             exit()
 
+    def desconhecido():
+        if len(comando) <= 1:
+            print('Digite um comando válido.')
+
 #input de comando
     if comando is not None:
-        start(), stop(), status(), executar(), fechar()
+        start(), stop(), status(), executar(), desconhecido(), executar()
 
