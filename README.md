@@ -79,7 +79,7 @@ Os comandos acima são declarados na função start()
 ```
 def start():
         if 'start' in comando:
-            if '-t' in comando:
+            if '-t' in comando and len(comando) > 1:
                 call('docker start {}'.format(comando[3]))
                 Popen('ping 127.0.0.1 -n {} > nul && docker stop {}'.format(int(comando[2]) + 1, comando[3]),
                       shell=True, stdout=FNULL, stderr=STDOUT)
@@ -99,7 +99,7 @@ stop <container_ID>
 O comando stop é declarado na função stop()
 ```
 def stop():
-        if 'stop' in comando:
+        if 'stop' in comando and len(comando) > 1:
             call('docker stop {}'.format(comando[1]))
 ```
 ### Comando status
@@ -113,7 +113,7 @@ status <container_ID>
 O comando status é declarado na função status()
 ```
 def status():
-        if 'status' in comando:
+        if 'status' in comando and len(comando) > 1:
             call('docker ps -a --filter id={}'.format(comando[1]), shell=True)
 ```
  
@@ -128,7 +128,7 @@ exec <container_ID>
 O comando exec é declarado na função executar()
 ```
 def executar():
-        if 'exec' in comando:
+        if 'exec' in comando and len(comando) > 1:
             call('docker exec -it {} cmd'.format(comando[1]), shell=True)
 ```            
  ### Comando exit
@@ -155,7 +155,7 @@ O script foi escrito com uma quantidade limitada de comandos, porém novos coman
 É necessário que se crie uma função para este comando, e nos parâmetros desta função será definida a sua instrução.
 ```
 def novo():
-        if 'novo' in comando:
+        if 'novo' in comando and len(comando) > 1:
             call('<docker_CLI_comando>', shell=True)
 ```
 ### Declarando a função
