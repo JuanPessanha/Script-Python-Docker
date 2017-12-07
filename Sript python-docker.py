@@ -10,7 +10,7 @@ print('-=-' * 30, '\n')
 #iniciando estrutura de repetição
 while loop != 0:
     comando = input('>>> ').lower().strip().split()
-    FNULL = open(devnull, 'w')
+    FNULL = open(devnull)
 
 #funções de comando
     def start():
@@ -28,11 +28,11 @@ while loop != 0:
 
     def status():
         if 'status' in comando and len(comando) > 1:
-            call('docker ps -a --filter id={}'.format(comando[1]), shell=True)
+            call('docker ps -a --filter id={}'.format(comando[1]))
 
     def executar():
         if 'exec' in comando and len(comando) > 1:
-            call('docker exec -it {} cmd'.format(comando[1]), shell=True)
+            call('docker exec -it {} cmd'.format(comando[1]))
 
     def fechar():
         if comando == ['exit']:
@@ -44,5 +44,5 @@ while loop != 0:
 
 #input de comando
     if comando is not None:
-        start(), stop(), status(), executar(), desconhecido(), executar()
+        start(), stop(), status(), executar(), desconhecido(), executar(), fechar()
 
