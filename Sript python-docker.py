@@ -44,5 +44,5 @@ while loop != 0:
 
 #input de comando
     if comando is not None:
-        start(), stop(), status(), executar(), desconhecido(), executar(), fechar()
+        start(), stop(), status(), executar(), desconhecido(), fechar()
 
